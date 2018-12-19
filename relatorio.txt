@@ -1,0 +1,50 @@
+Nome: JULIO KENJI UEDA NUSP: 9298281
+
+Mini Exercício Programa: Utilização das Memórias Caches
+
+1.CÓDIGO
+
+    Linguagem de programação utilizado: C
+    Para executar o programa: $make run
+
+2.MÉTODO UTILIZADO
+
+    Para evidenciar o uso da memória cache, o programa executa duas funções (onde em uma é possível verificar o uso da
+    memória cache e outra não), calcula o tempo de execução de cada uma delas e imprime o resultado na saída.
+
+    Funções 'void horizontal_operation(...)' e 'void vertical_operation()' foram criados com o formato e estruturas
+    semelhantes para a execução dos testes, onde ambos fazem uma operação simples com os elementos de uma matriz de
+    tamanho 'ROWS' x 'COLUMNS'.
+
+    A função 'void horizontal_operation(...)' itera executando uma operação simples nos elementos da matriz HORIZONTALMENTE,
+    beneficiando-se do uso da Localidade Espacial, um dos recursos do Princípio da Localidade de Refererência.
+    (https://pt.wikipedia.org/wiki/CPU_cache#Princ%C3%ADpio_da_localidade_de_refer%C3%AAncia)
+
+    A função 'void vertical_operation()' itera VERTICALMENTE entre os elementos da matriz, forçando a busca do elemento
+    da matriz na memória principal a cada iteração. Ou seja, não faz uso da memória cache da melhor forma.
+
+    A função 'int **create_matrix()' cria uma matriz 'ROWS'x'COLUMNS' com números inteiros distintos.
+
+    A função 'void destroy_matrix(int **matrix)' destrói a matriz.
+
+    A função 'uint64_t horizontal_time()' calcula o tempo de execução da função 'void horizontal operation(...)'
+
+    A função 'uint64_t vertical_time()' calcula o tempo de execução da função 'void vertical_operation(...)'
+
+    A função 'main()' é responsável pela execução do programa.
+
+3.RESULTADO
+
+    Os resultados dos testes são semelhantes.
+    Para uma matriz de tamanho 10000x10000 o resultado é:
+
+    Vertical operation time: 	1189646958
+    Horizontal operation time: 	365181642
+    Vertical / Horizontal Ratio: 3.257686
+
+    Onde 'Vertical operation time' é o tempo de execução da função onde o cache é mal utilizado e
+    'Horizontal operation time' é o tempo de execução da função onde o cache é bem utilizado.
+
+4.CONCLUSÃO
+
+    O uso da memória cache é importante, pois em casos como este teste, o ganho de desempenho é acima de 300%
